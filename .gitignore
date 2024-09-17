@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Directory for MVP development artifacts;
+tmp/
+temp/
+
+# Environment variables
+.env
+
+# Testing
+coverage/
+.jest/
+
+# Build files
+dist/
+build/
