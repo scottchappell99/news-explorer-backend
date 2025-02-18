@@ -1,22 +1,16 @@
-# Node modules
-node_modules/
-
 # Logs
-logs/
+logs
 *.log
 npm-debug.log*
 
-# Directory for MVP development artifacts;
-tmp/
-temp/
+#Dependency directory
+node_modules
 
-# Environment variables
+#Optional npm cache directory
+.npm
+
+#System files and IDE settings folders
+.DS_Store
+.idea
+.vscode
 .env
-
-# Testing
-coverage/
-.jest/
-
-# Build files
-dist/
-build/
