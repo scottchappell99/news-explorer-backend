@@ -73,7 +73,7 @@ const getCurrentUser = (req, res, next) => {
     });
 };
 
-//PATCH current user
+//PATCH current user - might not need
 const updateCurrentUser = (req, res, next) => {
   const { user } = req;
   const { name, avatar } = req.body;
