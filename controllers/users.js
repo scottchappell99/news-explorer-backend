@@ -73,29 +73,8 @@ const getCurrentUser = (req, res, next) => {
     });
 };
 
-//PATCH current user - might not need
-const updateCurrentUser = (req, res, next) => {
-  const { user } = req;
-  const { name, avatar } = req.body;
-
-  User.findOneAndUpdate(
-    user,
-    { name, avatar },
-    { runValidators: true, new: true }
-  )
-    .then((updatedUser) => res.send(updatedUser))
-    .catch((err) => {
-      if (err.name === "ValidationError") {
-        next(new BadRequestError("Invalid Data."));
-      } else {
-        next(err);
-      }
-    });
-};
-
 module.exports = {
   createUser,
   login,
   getCurrentUser,
-  updateCurrentUser,
 };
