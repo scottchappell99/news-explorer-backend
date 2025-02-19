@@ -32,17 +32,17 @@ const saveArticle = (req, res, next) => {
 
 // DELETE an article by id
 const deleteArticle = (req, res, next) => {
-  const { articleId } = req.params;
+  const { itemId } = req.params;
 
-  Article.findById(articleId)
+  Article.findById(itemId)
     .orFail()
-    .then((article) => {
-      if (article.owner.toString() !== req.user._id) {
+    .then((item) => {
+      if (item.owner.toString() !== req.user._id) {
         return next(
-          new ForbiddenError("You are not authorized to unlike this article.")
+          new ForbiddenError("You are not authorized to unlike this article")
         );
       }
-      return article
+      return item
         .deleteOne()
         .then(() => res.send({ message: "Article unliked." }));
     })
