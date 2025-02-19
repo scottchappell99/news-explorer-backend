@@ -1,7 +1,37 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const { errors } = require("celebrate");
+const helmet = require("helmet");
+const indexRouter = require("./routes/index");
+const errorHandler = require("./middlewares/error-handler");
+const { requestLogger, errorLogger } = require("./middlewares/logger");
+const { limiter } = require("./middlewares/rate-limiter");
 
 const app = express();
 const { PORT = 3002 } = process.env;
 
-mongoose.connect("mongodb://127.0.0.1:27017/news-explorer_db");
+mongoose
+  .connect("mongodb://127.0.0.1:27017/news-explorer_db")
+  .then(() => {
+    console.log("Connected to DB");
+  })
+  .catch(console.error);
+
+app.use(express.json());
+app.use(cors());
+
+app.use(requestLogger);
+
+app.use(helmet());
+app.use(limiter);
+app.use("/", indexRouter);
+app.use(errorLogger);
+app.use(errors());
+app.use(errorHandler);
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});

@@ -8,7 +8,7 @@ const { UnauthorizedError } = require("../utils/errors/UnauthorizedError");
 const { NotFoundError } = require("../utils/errors/NotFoundError");
 const { JWT_SECRET } = require("../utils/config");
 
-//POST new user
+// POST new user
 const createUser = (req, res, next) => {
   const { name, email, password } = req.body;
 
@@ -33,7 +33,7 @@ const createUser = (req, res, next) => {
     });
 };
 
-//POST login
+// POST login
 const login = (req, res, next) => {
   const { email, password } = req.body;
 
@@ -57,7 +57,7 @@ const login = (req, res, next) => {
     });
 };
 
-//GET current user
+// GET current user
 const getCurrentUser = (req, res, next) => {
   const _id = req.user;
 

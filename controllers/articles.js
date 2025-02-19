@@ -3,7 +3,7 @@ const { BadRequestError } = require("../utils/errors/BadRequestError");
 const { ForbiddenError } = require("../utils/errors/ForbiddenError");
 const { NotFoundError } = require("../utils/errors/NotFoundError");
 
-//GET articles
+// GET articles
 const getArticles = (req, res, next) => {
   const user = req.user._id;
 
@@ -14,7 +14,7 @@ const getArticles = (req, res, next) => {
     });
 };
 
-//POST new saved article
+// POST new saved article
 const saveArticle = (req, res, next) => {
   const { keyword, title, text, date, source, link, image } = req.body;
   const owner = req.user._id;
@@ -30,7 +30,7 @@ const saveArticle = (req, res, next) => {
     });
 };
 
-//DELETE an article by id
+// DELETE an article by id
 const deleteArticle = (req, res, next) => {
   const { articleId } = req.params;
 

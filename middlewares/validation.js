@@ -13,7 +13,7 @@ const validateArticleBody = celebrate({
     keyword: Joi.string().required().messages({
       "string.empty": "Article must have a keyword.",
     }),
-    title: Joi.string().required().message({
+    title: Joi.string().required().messages({
       "string.empty": "Article must have a title.",
     }),
     text: Joi.string().required().messages({
