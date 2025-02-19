@@ -8,7 +8,7 @@ const validateURL = (value, helpers) => {
   return helpers.error("string.uri");
 };
 
-const validateArticleItemBody = celebrate({
+const validateArticleBody = celebrate({
   body: Joi.object().keys({
     keyword: Joi.string().required().messages({
       "string.empty": "Article must have a keyword.",
@@ -54,16 +54,6 @@ const validateUserBody = celebrate({
   }),
 });
 
-const validateNewUserBody = celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().required().min(2).max(30).messages({
-      "string.min": 'The minimum length of the "name" field is 2.',
-      "string.max": 'The maximum length of the "name" field is 30.',
-      "string.empty": 'The "name" field must be filled in.',
-    }),
-  }),
-});
-
 const validateAuthentication = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email().messages({
@@ -95,9 +85,8 @@ const validateUserId = celebrate({
 });
 
 module.exports = {
-  validateArticleItemBody,
+  validateArticleBody,
   validateUserBody,
-  validateNewUserBody,
   validateAuthentication,
   validateArticleId,
   validateUserId,
